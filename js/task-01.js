@@ -1,17 +1,12 @@
 const refs = {
-    listCategories: document.querySelector("#categories"),
-    listTitles: document.querySelectorAll("li.item h2"),
-    categoryItem: document.querySelectorAll("li ul")
-}
+  listCategories: document.querySelectorAll('li.item'),
+  listTitles: document.querySelectorAll('li.item h2'),
+  categoryItem: document.querySelectorAll('li ul'),
+};
 
-console.log(`Number of categories: ${refs.listCategories.children.length}`);
+console.log(`Number of categories: ${[...refs.listCategories].length}`);
 
-const categoriesTitlesArray = [...refs.listTitles].map(el => el.textContent);
-const categoriesItemsArray = [...refs.categoryItem].map(el => el.childElementCount);
-
-
-for (let i = 0; i < categoriesTitlesArray.length; i += 1) {
-    console.log(`Category: ${categoriesTitlesArray[i]}`);
-    console.log(`Elements: ${categoriesItemsArray[i]}`);
-}
-
+[...refs.listCategories].forEach(el => {
+  console.log(`Category: ${el.children[0].textContent}`);
+  console.log(`Elements: ${el.children[1].childElementCount}`);
+});
